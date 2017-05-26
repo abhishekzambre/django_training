@@ -1,8 +1,32 @@
+<!-- Loads the path to static files -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'music/bootstrap.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'music:index' %}">Viberr</a>
+        </div>
+
+        <!-- Item -->
+        <div></div>
+
+    </div>
+</nav>
+
 {% if all_albums %}
     <h3>Here are all my albums:</h3>
     <ul>
         {% for album in all_albums %}
-        <li><a href="/music/{{ album.id }}/">{{ album.album_title }}</a></li>
+        <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
